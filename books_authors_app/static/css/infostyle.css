@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* outline: 1px dotted red;  */
+}
+
+.container {
+    padding: 10px;
+}
+
+.row{
+    margin-top: 20px;
+}
+.row a{
+    text-align: right;
+    padding-right: 30px;
+}
+
+.row p{
+    margin-top: 20px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.row ul{
+    list-style-position: inside;
+    padding-left: 30px;
+}
+
+.col-sm-1{
+    margin-left: 30px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang= "en">
+    <head>
+        <meta charset = "utf-8">
+        <title>BooksandAuthors</title>
+        <meta name="viewport" content="width-device-width, initial-scale-1">
+        {% load static %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <div class="container">
+        <body>
+            <div class="col-sm-2">
+                <a href="/authors" class="btn btn-primary">Go to Authors</a>
+            </div>
+            <div class= "row">
+                <form class = "form-group" action='/books' method='post'>
+                    {% csrf_token %}
+                        <h2>Add a Book</h2>
+                        <div class= "form-group row">
+                            <label for="title" class= "col-sm-2 col-form-label">Title</label>
+                            <div class= "col-sm-10">
+                                <input type= "text" name="title">
+                            </div>
+                        </div>
+                        <div class= "form-group row">
+                            <label for= "description" class= "col-sm-2 col-form-label">Description</label>
+                            <div class= "col-sm-10">
+                                <textarea class="col-sm-10" rows='3' name="desc"></textarea>
+                            </div>
+                        </div>
+                        <div class= "form-group row">
+                            <input class="col-sm-2" type="submit" value="Add">
+                        </div>
+                </form>
+                <div class="col-sm-4">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for books in all_books %}
+                        <tr>
+                            <td>{{books.id}}</td>
+                            <td>{{books.title}}</td>
+                            <td><a href="/book_info/{{books.id}}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </body>
+    </div>
+</html>
